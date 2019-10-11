@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<EditTextPreference
+    android:key="seed"
+    android:title="@string/seed_title"
+    android:inputType="number">
+</EditTextPreference>
+    <CheckBoxPreference
+        android:key="dynamic_researches"
+        android:title="@string/dynamic_researches_title"
+        android:defaultValue="true">
+    </CheckBoxPreference>
+<CheckBoxPreference
+    android:key="outer_planets"
+    android:title="@string/outer_planets_title"
+    android:defaultValue="true">
+</CheckBoxPreference>
+
+</PreferenceScreen>
