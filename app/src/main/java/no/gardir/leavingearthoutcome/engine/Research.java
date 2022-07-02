@@ -1,5 +1,6 @@
-package no.uio.gardir.leavingearthoutcome.engine;
+package no.gardir.leavingearthoutcome.engine;
 
+import java.util.List;
 import java.util.Random;
 import java.util.Collections;
 import java.util.ArrayList;
@@ -20,7 +21,7 @@ public class Research {
 	private static LinkedList<Outcome> createOutcomes() {
 		Random rand = new Random( SEED );
 		int NUMB_OUTCOMES = 50;
-		LinkedList<Outcome> outcomes = new LinkedList<>();
+		LinkedList<Outcome> outcomes = new LinkedList();
 		
 		int i=0;
 		for ( int p=0; p<Double.valueOf( NUMB_OUTCOMES * PERCENT_SUCCESS ).intValue(); p++ ) {
@@ -103,17 +104,31 @@ public class Research {
 	public enum ResearchType {
 		JUNO, ATLAS, SOYUZ, SATURN, ION_THRUSTERS,
 		SURVEYING, LANDING, REENTRY, RENDEZVOUS, LIFE_SUPPORT,
-		PROTON, AEROBREAKING
+		PROTON, AEROBREAKING, SPACE_SHUTTLE, SYNTHESIS, ROVER
 	}
 	
 	public final ResearchType research;
-	private ArrayList<Outcome> outcomes = new ArrayList<>(3);
+	public final int reveal;
+	private ArrayList<Outcome> stackedOutcomes = new ArrayList<>(3);
 	
 	public Research(ResearchType research) {
 		this.research = research;
-		int localOutcomes = (research == ResearchType.SURVEYING) ? 1 : 3;
+		int localOutcomes = getLocalOutcomes(research);
 		for( int i=0; i<localOutcomes; i++) {
-			outcomes.add( allOutcomes.pop() );
+			stackedOutcomes.add( allOutcomes.pop() );
+		}
+		reveal = research == ResearchType.ROVER ? 2 : 1;
+	}
+
+	private int getLocalOutcomes(ResearchType research) {
+		switch (research) {
+			case SURVEYING:
+				return 1;
+			case SYNTHESIS:
+			case ROVER:
+				return 5;
+			default:
+				return 3;
 		}
 	}
 
@@ -129,36 +144,59 @@ public class Research {
 		if ( o instanceof Research ) {
 			Research r = ( Research ) o;
 			return this.research == r.research;
-		} else if ( o instanceof ResearchType ) {
-			ResearchType rt = ( ResearchType ) o;
-			return this.research == rt;
 		}
 		return super.equals(o);
 	}
 
-	public Outcome drawOutcome() {
-		if ( outcomes.size() > 0 ) {
-			Collections.shuffle(outcomes);
-			return outcomes.get(0);
+	public List<Outcome> drawOutcome() {
+		switch (this.research) {
+			case ROVER:
+				return drawOutcomes(2);
+			default:
+				return drawOutcomes(1);
 		}
-		return Outcome.SUCCESS;
+
+	}
+
+	public List<Outcome> drawOutcomes(int nOutcomes) {
+		List<Outcome> drawnOutcomes = new LinkedList<>();
+		if (stackedOutcomes.size() > 0) {
+			Collections.shuffle(stackedOutcomes);
+			for (int i=0; i<Math.min(nOutcomes, stackedOutcomes.size()); i++) {
+				drawnOutcomes.add(stackedOutcomes.get(i));
+			}
+		}
+		else  drawnOutcomes.add(Outcome.SUCCESS);
+		return drawnOutcomes;
+	}
+
+	public boolean isOfType(ResearchType researchType) {
+		return this.research == researchType;
 	}
 
     public int outcomes() {
-        return outcomes.size();
+        return stackedOutcomes.size();
     }
 
 	public String removeLastOutcome() {
-		if ( outcomes.size() > 0 ) {
-			return String.format("%s removed, %d outcomes left.", outcomes.remove(0), outcomes.size() );
+		if ( stackedOutcomes.size() > 0 ) {
+			return String.format("%s removed, %d outcomes left.", stackedOutcomes.remove(0), stackedOutcomes.size() );
 		} else {
 			return "No more outcomes to remove!";
+		}
+	}
+
+	public String removeOutcome(Outcome result) {
+		if (stackedOutcomes.contains(result)) {
+			return String.format("%s removed, %d outcomes left.", stackedOutcomes.remove(result), stackedOutcomes.size() );
+		} else {
+			return String.format("%s has no %s to remove!", this.research, result);
 		}
 	}
 	
 	@Override
 	public String toString() {
-		return String.format("%s -- %d outcomes", research, outcomes.size());
+		return String.format("%s -- %d outcomes", research, stackedOutcomes.size());
 	}
 		
 	

@@ -1,4 +1,4 @@
-package no.uio.gardir.leavingearthoutcome.activities;
+package no.gardir.leavingearthoutcome.activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -9,9 +9,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 
-import no.uio.gardir.leavingearthoutcome.R;
-import no.uio.gardir.leavingearthoutcome.adapters.UseResearchAdapter;
-import no.uio.gardir.leavingearthoutcome.engine.Player;
+import no.gardir.leavingearthoutcome.R;
+import no.gardir.leavingearthoutcome.adapters.UseResearchAdapter;
+import no.gardir.leavingearthoutcome.engine.Player;
 
 public class UseResearchActivity extends AppCompatActivity {
 
@@ -40,7 +40,6 @@ public class UseResearchActivity extends AppCompatActivity {
             Intent intent = new Intent(UseResearchActivity.this, DisplayResearchActivity.class);
             intent.putExtra( RESEARCH, clickedResearch);
             startActivity(intent);
-
         }
     }
 

@@ -1,4 +1,4 @@
-package no.uio.gardir.leavingearthoutcome.activities;
+package no.gardir.leavingearthoutcome.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,18 +7,21 @@ import android.view.MenuItem;
 import android.widget.GridView;
 import android.widget.LinearLayout;
 
-import no.uio.gardir.leavingearthoutcome.adapters.NewResearchAdapter;
-import no.uio.gardir.leavingearthoutcome.R;
-import no.uio.gardir.leavingearthoutcome.engine.Player;
-import no.uio.gardir.leavingearthoutcome.hacks.MyGridView;
+import no.gardir.leavingearthoutcome.adapters.NewResearchAdapter;
+import no.gardir.leavingearthoutcome.R;
+import no.gardir.leavingearthoutcome.engine.Player;
+import no.gardir.leavingearthoutcome.hacks.MyGridView;
 
 public class NewResearchActivity extends AppCompatActivity {
     public static boolean dynamic = true;
     static boolean OUTER_PLANETS = true;
+    static boolean STATIONS = true;
     static int COUNT;
 
     public static void calcCOUNT() {
-        COUNT = OUTER_PLANETS ? 12 : 10; // +2 for outer planets
+        COUNT = 10;
+        COUNT += OUTER_PLANETS ? 2 : 0; // +2 for outer planets
+        COUNT += STATIONS ? 3 : 0;
         COUNT -= Player.getPlayer().getResearchCount();
     }
 

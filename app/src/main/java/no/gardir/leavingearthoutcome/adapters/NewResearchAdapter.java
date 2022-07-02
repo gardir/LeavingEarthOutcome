@@ -1,4 +1,4 @@
-package no.uio.gardir.leavingearthoutcome.adapters;
+package no.gardir.leavingearthoutcome.adapters;
 
 import android.content.Context;
 import android.view.View;
@@ -9,10 +9,10 @@ import android.widget.TextView;
 
 import java.util.LinkedList;
 
-import no.uio.gardir.leavingearthoutcome.MainMenu;
-import no.uio.gardir.leavingearthoutcome.activities.NewResearchActivity;
-import no.uio.gardir.leavingearthoutcome.engine.Player;
-import no.uio.gardir.leavingearthoutcome.engine.Research;
+import no.gardir.leavingearthoutcome.MainMenu;
+import no.gardir.leavingearthoutcome.activities.NewResearchActivity;
+import no.gardir.leavingearthoutcome.engine.Player;
+import no.gardir.leavingearthoutcome.engine.Research;
 
 /**
  * Created by gardir on 20.10.16.

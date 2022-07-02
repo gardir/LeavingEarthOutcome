@@ -1,4 +1,4 @@
-package no.uio.gardir.leavingearthoutcome;
+package no.gardir.leavingearthoutcome;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

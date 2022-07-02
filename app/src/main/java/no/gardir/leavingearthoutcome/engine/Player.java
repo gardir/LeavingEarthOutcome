@@ -1,4 +1,4 @@
-package no.uio.gardir.leavingearthoutcome.engine;
+package no.gardir.leavingearthoutcome.engine;
 
 import java.util.LinkedList;
 import java.lang.StringBuilder;
@@ -33,7 +33,7 @@ public class Player {
 
 	public boolean hasResearch(Research.ResearchType type) {
 		for ( Research r : researches ) {
-			if ( r.equals( type ) ) {
+			if ( r.isOfType( type ) ) {
 				return true;
 			}
 		}

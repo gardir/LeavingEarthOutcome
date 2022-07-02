@@ -1,7 +1,6 @@
-package no.uio.gardir.leavingearthoutcome;
+package no.gardir.leavingearthoutcome;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -17,11 +16,11 @@ import android.view.View;
 
 import java.util.HashMap;
 
-import no.uio.gardir.leavingearthoutcome.activities.NewResearchActivity;
-import no.uio.gardir.leavingearthoutcome.activities.SettingsActivity;
-import no.uio.gardir.leavingearthoutcome.activities.UseResearchActivity;
-import no.uio.gardir.leavingearthoutcome.engine.Player;
-import no.uio.gardir.leavingearthoutcome.engine.Research;
+import no.gardir.leavingearthoutcome.activities.NewResearchActivity;
+import no.gardir.leavingearthoutcome.activities.SettingsActivity;
+import no.gardir.leavingearthoutcome.activities.UseResearchActivity;
+import no.gardir.leavingearthoutcome.engine.Player;
+import no.gardir.leavingearthoutcome.engine.Research;
 
 public class MainMenu extends AppCompatActivity {
     private static final String TAG = "MainMenu";
@@ -40,6 +39,9 @@ public class MainMenu extends AppCompatActivity {
         imageIds.put(Research.ResearchType.ION_THRUSTERS, R.drawable.ion_thrusters);
         imageIds.put(Research.ResearchType.PROTON, R.drawable.proton);
         imageIds.put(Research.ResearchType.AEROBREAKING, R.drawable.aerobreaking);
+        imageIds.put(Research.ResearchType.SPACE_SHUTTLE, R.drawable.space_shuttle);
+        imageIds.put(Research.ResearchType.ROVER, R.drawable.rover);
+        imageIds.put(Research.ResearchType.SYNTHESIS, R.drawable.synthesis);
         return imageIds;
     }
 

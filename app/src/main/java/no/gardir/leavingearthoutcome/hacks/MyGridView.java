@@ -1,4 +1,4 @@
-package no.uio.gardir.leavingearthoutcome.hacks;
+package no.gardir.leavingearthoutcome.hacks;
 
 import android.annotation.TargetApi;
 import android.content.Context;

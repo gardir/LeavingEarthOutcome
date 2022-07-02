@@ -1,4 +1,4 @@
-package no.uio.gardir.leavingearthoutcome.activities;
+package no.gardir.leavingearthoutcome.activities;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -9,9 +9,9 @@ import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceGroup;
 
-import no.uio.gardir.leavingearthoutcome.MainMenu;
-import no.uio.gardir.leavingearthoutcome.R;
-import no.uio.gardir.leavingearthoutcome.engine.Research;
+import no.gardir.leavingearthoutcome.MainMenu;
+import no.gardir.leavingearthoutcome.R;
+import no.gardir.leavingearthoutcome.engine.Research;
 
 /**
  * Created by gardir on 20.10.16.

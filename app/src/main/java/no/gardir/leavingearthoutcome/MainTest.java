@@ -1,10 +1,11 @@
-package no.uio.gardir.leavingearthoutcome;
+package no.gardir.leavingearthoutcome;
 
+import java.util.List;
 import java.util.Scanner;
 import java.util.LinkedList;
 
-import no.uio.gardir.leavingearthoutcome.engine.Player;
-import no.uio.gardir.leavingearthoutcome.engine.Research;
+import no.gardir.leavingearthoutcome.engine.Player;
+import no.gardir.leavingearthoutcome.engine.Research;
 
 
 public class MainTest {
@@ -97,13 +98,15 @@ public class MainTest {
                 default:
                     Research r = player.getResearch(id);
                     if (r != null) {
-                        Research.Outcome result = r.drawOutcome();
-                        System.out.println(result);
-                        String input = stdin(String.format("remove (%d$)? ",
-                                result == Research.Outcome.SUCCESS ? 10 : 5));
-                        if (input.equals("yes") || input.equals("y")) {
-                            System.out.println(r.removeLastOutcome());
-                        }
+                        List<Research.Outcome> results = r.drawOutcome();
+						for (Research.Outcome result: results){
+							System.out.println(result);
+							String input = stdin(String.format("remove (%d$)? ",
+									result == Research.Outcome.SUCCESS ? 10 : 5));
+							if (input.equals("yes") || input.equals("y")) {
+								System.out.println(r.removeLastOutcome());
+							}
+						}
                     } else {
                         System.out.println("No such research id: " + id);
                     }
