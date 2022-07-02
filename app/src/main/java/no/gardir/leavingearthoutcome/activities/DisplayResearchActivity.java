@@ -104,7 +104,6 @@ public class DisplayResearchActivity extends AppCompatActivity {
                             getResources(),
                             imageId,
                             135, 204));
-            //layer.setLayerGravity(i, Gravity.LEFT | Gravity.TOP);
         }
         LayerDrawable layer = new LayerDrawable(outcomes);
         for (int i=0; i<outcomes.length; i++)
@@ -117,12 +116,12 @@ public class DisplayResearchActivity extends AppCompatActivity {
             if (results != null && i + results.size() > outcomes.length)
             {
                 int multiple = (i + results.size() - outcomes.length) % outcomes.length;
-                leftOffset += multiple * 135;
-                rightOffset -= multiple * 135;
+                leftOffset += multiple * 200;
+                rightOffset -= multiple * 200;
             }
             layer.setLayerInset(i, leftOffset, topOffset, rightOffset, botOffset);
-//            layer.setLayerInset(i, iOffset, iOffset, -iOffset, -iOffset);
         }
+        //layer.setLayerGravity(i, Gravity.LEFT | Gravity.TOP);
         return layer;
     }
 

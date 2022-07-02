@@ -15,7 +15,7 @@ import no.gardir.leavingearthoutcome.engine.Player;
 
 public class UseResearchActivity extends AppCompatActivity {
 
-    public static final String RESEARCH = "no.uio.gardir.RESEARCH";
+    public static final String RESEARCH = "no.gardir.RESEARCH";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

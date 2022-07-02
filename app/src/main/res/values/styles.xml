@@ -1,6 +1,9 @@
 <resources>
 
     <!-- Base application theme. -->
+    <style name="LeavingEarthOutcomeThemeHome" parent="Theme.AppCompat.DayNight">
+        <!-- Customize your theme here. -->
+    </style>
     <style name="LeavingEarthOutcomeTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
         <!-- Customize your theme here. -->
     </style>

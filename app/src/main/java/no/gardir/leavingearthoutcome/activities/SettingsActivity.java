@@ -62,6 +62,9 @@ public class SettingsActivity extends PreferenceActivity implements
             case "outer_planets":
                 NewResearchActivity.OUTER_PLANETS = sharedPreferences.getBoolean("outer_planets", true);
                 break;
+            case "stations":
+                NewResearchActivity.STATIONS = sharedPreferences.getBoolean("stations", true);
+                break;
         }
         updatePrefSummary(findPreference(key));
     }

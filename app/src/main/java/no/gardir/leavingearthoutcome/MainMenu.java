@@ -88,7 +88,7 @@ public class MainMenu extends AppCompatActivity {
 
     public static int toDP(int in) {
         // Convert the dps to pixels, based on density scale
-        return (int) (in * scale + 0.5f);
+        return (int) (in * scale);
     }
 
     @Override
@@ -134,6 +134,10 @@ public class MainMenu extends AppCompatActivity {
 
     public void reset(View view) {
         resetAll();
+    }
+
+    public void toolbar(View view) {
+        return;
     }
 
     /**

@@ -20,16 +20,16 @@
         android:layout_height="wrap_content"
         android:text="@string/use_research"
         android:onClick="useResearch"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/remove_three_outcomes"
-        android:onClick="removeThreeOutcomes"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/remove_one_outcome"
-        android:onClick="removeOneOutcome"/>
+<!--    <Button-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="@string/remove_three_outcomes"-->
+<!--        android:onClick="removeThreeOutcomes"/>-->
+<!--    <Button-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="@string/remove_one_outcome"-->
+<!--        android:onClick="removeOneOutcome"/>-->
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
