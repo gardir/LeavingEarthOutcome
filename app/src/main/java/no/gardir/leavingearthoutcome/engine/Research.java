@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Research {
+	public static boolean OUTER_PLANETS = true;
+	public static boolean STATIONS = true;
 	private static long SEED = getRandomSeed();
 	private static long getRandomSeed() {
 		Random r = new Random();
@@ -72,11 +74,32 @@ public class Research {
 	public static LinkedList<ResearchType> getAvailableResearches(Player player) {
 		LinkedList<ResearchType> list = new LinkedList<>();
 		for ( ResearchType type : ResearchType.values() ) {
-			if ( !player.hasResearch(type) ) {
+			if ( !player.hasResearch(type) && validResearch(type)
+			) {
 				list.add(type);
 			}
 		}
 		return list;
+	}
+
+	private static boolean validResearch(ResearchType research) {
+		if (contains(coreResearches, research)) {
+			return true;
+		} else if (OUTER_PLANETS && contains(outerPlanetsResearches, research)) {
+			return true;
+		} else if (STATIONS && contains(stationsResearches, research)) {
+			return true;
+		}
+		return false;
+	}
+
+	private static boolean contains(ResearchType[] researches, ResearchType research) {
+		for (ResearchType contender : researches) {
+			if (contender == research) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	public static void removeOutcomes(int numb) {
@@ -104,8 +127,23 @@ public class Research {
 	public enum ResearchType {
 		JUNO, ATLAS, SOYUZ, SATURN, ION_THRUSTERS,
 		SURVEYING, LANDING, REENTRY, RENDEZVOUS, LIFE_SUPPORT,
-		PROTON, AEROBREAKING, SPACE_SHUTTLE, SYNTHESIS, ROVER
+		PROTON, AEROBREAKING,
+		SPACE_SHUTTLE, SYNTHESIS, ROVER
 	}
+
+	public static final ResearchType[] coreResearches = new ResearchType[]{
+			ResearchType.JUNO, ResearchType.ATLAS, ResearchType.SOYUZ, ResearchType.SATURN,
+			ResearchType.ION_THRUSTERS, ResearchType.SURVEYING, ResearchType.LANDING,
+			ResearchType.REENTRY, ResearchType.RENDEZVOUS, ResearchType.LIFE_SUPPORT,
+	};
+
+	public static final ResearchType[] outerPlanetsResearches = new ResearchType[]{
+			ResearchType.PROTON, ResearchType.AEROBREAKING
+	};
+
+	public static final ResearchType[] stationsResearches = new ResearchType[]{
+			ResearchType.SPACE_SHUTTLE, ResearchType.SYNTHESIS, ResearchType.ROVER
+	};
 	
 	public final ResearchType research;
 	public final int reveal;
