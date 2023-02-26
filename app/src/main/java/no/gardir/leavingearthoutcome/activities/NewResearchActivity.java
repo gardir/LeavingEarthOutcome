@@ -19,8 +19,8 @@ public class NewResearchActivity extends AppCompatActivity {
 
     public static void calcCOUNT() {
         COUNT = 10;
-        COUNT += Research.OUTER_PLANETS ? 2 : 0; // +2 for outer planets
-        COUNT += Research.STATIONS ? 3 : 0;
+        COUNT += Research.OUTER_PLANETS_ENABLED ? 2 : 0; // +2 for outer planets
+        COUNT += Research.STATIONS_ENABLED ? 3 : 0;
         COUNT -= Player.getPlayer().getResearchCount();
     }
 

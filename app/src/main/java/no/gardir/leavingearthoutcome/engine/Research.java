@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Research {
-	public static boolean OUTER_PLANETS = true;
-	public static boolean STATIONS = true;
+	public static boolean OUTER_PLANETS_ENABLED = true;
+	public static boolean STATIONS_ENABLED = true;
 	private static long SEED = getRandomSeed();
 	private static long getRandomSeed() {
 		Random r = new Random();
@@ -22,8 +22,8 @@ public class Research {
 	protected static LinkedList<Outcome> allOutcomes = createOutcomes();
 	private static LinkedList<Outcome> createOutcomes() {
 		Random rand = new Random( SEED );
-		int NUMB_OUTCOMES = 50;
-		LinkedList<Outcome> outcomes = new LinkedList();
+		int NUMB_OUTCOMES = 100;
+		LinkedList<Outcome> outcomes = new LinkedList<>();
 		
 		int i=0;
 		for ( int p=0; p<Double.valueOf( NUMB_OUTCOMES * PERCENT_SUCCESS ).intValue(); p++ ) {
@@ -85,9 +85,9 @@ public class Research {
 	private static boolean validResearch(ResearchType research) {
 		if (contains(coreResearches, research)) {
 			return true;
-		} else if (OUTER_PLANETS && contains(outerPlanetsResearches, research)) {
+		} else if (OUTER_PLANETS_ENABLED && contains(outerPlanetsResearches, research)) {
 			return true;
-		} else if (STATIONS && contains(stationsResearches, research)) {
+		} else if (STATIONS_ENABLED && contains(stationsResearches, research)) {
 			return true;
 		}
 		return false;
@@ -187,12 +187,10 @@ public class Research {
 	}
 
 	public List<Outcome> drawOutcome() {
-		switch (this.research) {
-			case ROVER:
-				return drawOutcomes(2);
-			default:
-				return drawOutcomes(1);
+		if (this.research == ResearchType.ROVER) {
+			return drawOutcomes(2);
 		}
+		return drawOutcomes(1);
 
 	}
 

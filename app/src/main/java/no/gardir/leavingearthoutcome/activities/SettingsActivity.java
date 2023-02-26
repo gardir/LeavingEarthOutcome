@@ -57,13 +57,13 @@ public class SettingsActivity extends PreferenceActivity implements
                 }
                 break;
             case "dynamic_researches":
-                NewResearchActivity.dynamic = sharedPreferences.getBoolean("dynamic_researches", true);
+                NewResearchActivity.dynamic = sharedPreferences.getBoolean("dynamic_researches", NewResearchActivity.dynamic);
                 break;
             case "outer_planets":
-                Research.OUTER_PLANETS = sharedPreferences.getBoolean("outer_planets", true);
+                Research.OUTER_PLANETS_ENABLED = sharedPreferences.getBoolean("outer_planets", Research.OUTER_PLANETS_ENABLED);
                 break;
             case "stations":
-                Research.STATIONS = sharedPreferences.getBoolean("stations", true);
+                Research.STATIONS_ENABLED = sharedPreferences.getBoolean("stations", Research.STATIONS_ENABLED);
                 break;
         }
         updatePrefSummary(findPreference(key));
