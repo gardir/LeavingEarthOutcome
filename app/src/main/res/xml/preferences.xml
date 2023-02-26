@@ -15,5 +15,10 @@
     android:title="@string/outer_planets_title"
     android:defaultValue="true">
 </CheckBoxPreference>
+    <CheckBoxPreference
+        android:key="stations"
+        android:title="@string/stations_title"
+        android:defaultValue="true">
+    </CheckBoxPreference>
 
 </PreferenceScreen>

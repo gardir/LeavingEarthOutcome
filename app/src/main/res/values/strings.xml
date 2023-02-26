@@ -15,5 +15,6 @@
     <string name="remove_three_outcomes">Removes 3 outcome</string>
     <string name="remove_one_outcome">Removes 1 outcome</string>
     <string name="outer_planets_title">\'Outer Planets\' expansion researches</string>
+    <string name="stations_title">\'Stations\' expansion researches</string>
     <string name="dynamic_researches_title">Dynamic (move, resize) new research</string>
 </resources>
